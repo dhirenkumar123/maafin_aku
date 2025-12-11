@@ -1,0 +1,160 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #fce4ec; /* Warna latar belakang pink lembut */
+    overflow: hidden; /* Penting untuk tombol kabur */
+}
+
+#container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    text-align: center;
+    transition: all 0.5s ease;
+}
+
+/* --- Gaya Karakter (CSS Murni) --- */
+.face {
+    width: 150px;
+    height: 150px;
+    background-color: #ffd8a8; /* Warna kulit */
+    border-radius: 50%;
+    position: relative;
+    margin: 20px auto 10px;
+}
+
+/* Mata Sedih */
+.eye {
+    width: 20px;
+    height: 20px;
+    background-color: #333;
+    border-radius: 50%;
+    position: absolute;
+    top: 40px;
+    animation: blink 4s infinite;
+}
+.left { left: 35px; }
+.right { right: 35px; }
+
+/* Mulut Sedih */
+.mouth.sad {
+    width: 50px;
+    height: 10px;
+    border: 3px solid #333;
+    border-top: none;
+    border-radius: 0 0 30px 30px;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* --- Animasi Air Mata --- */
+.tear {
+    width: 8px;
+    height: 8px;
+    background-color: #4fc3f7; /* Warna air mata biru muda */
+    border-radius: 50%;
+    position: absolute;
+    opacity: 0;
+    animation: drop 1.5s infinite; /* Animasi jatuh */
+}
+.left-tear { top: 60px; left: 45px; }
+.right-tear { top: 60px; right: 45px; }
+
+/* Posisi dan durasi air mata yang berbeda */
+.left-tear { animation-delay: 0s; }
+.right-tear { animation-delay: 0.75s; }
+
+@keyframes drop {
+    0% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(30px) scale(1.2); opacity: 1; }
+    100% { transform: translateY(60px) scale(0.5); opacity: 0; }
+}
+
+/* --- Gaya Karakter Senyum --- */
+.face.happy { background-color: #a8ffb9; /* Warna kulit lebih cerah/happy */ }
+.happy-eye { background-color: #333; width: 10px; height: 10px; border-radius: 50%; } /* Mata lebih kecil/bersemangat */
+.mouth.smile {
+    width: 80px;
+    height: 40px;
+    border: 3px solid #333;
+    border-bottom: none;
+    border-radius: 40px 40px 0 0;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg); /* Diputar agar terlihat tersenyum */
+    background-color: #ff9999; /* Warna lidah/dalam mulut */
+}
+
+/* --- Gaya Teks dan Tombol --- */
+#typing-text-area {
+    font-size: 1.2em;
+    min-height: 80px; /* Jaga ruang agar tidak terjadi 'lompatan' saat teks muncul */
+    margin-top: 20px;
+    color: #444;
+}
+
+#button-area {
+    margin-top: 30px;
+}
+
+button {
+    padding: 12px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    z-index: 10; /* Pastikan tombol di atas segalanya */
+}
+
+#yes-button {
+    background-color: #ff4081; /* Pink */
+    color: white;
+}
+#yes-button:hover {
+    background-color: #e91e63;
+    transform: scale(1.05);
+}
+
+#no-button {
+    background-color: #fdd835; /* Kuning */
+    color: #333;
+    /* Tambahkan transisi agar pergerakan "kabur" terlihat halus */
+    transition: all 0.1s linear; 
+}
+
+/* Gaya Hasil Akhir */
+#happy-result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 1s ease-in-out;
+}
+#thank-you-message {
+    color: #e91e63;
+    margin-top: 15px;
+    animation: pulse 1.5s infinite;
+}
+
+/* Animasi Tambahan */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
